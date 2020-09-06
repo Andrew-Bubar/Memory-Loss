@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Art/pixel_8.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Art/picturetopeople.org-34ffaa4008bf944ae63decf079955847d55a6d781a31a79933 (1).png" type="Texture" id=3]
+[ext_resource path="res://Code/TitleScreen.gd" type="Script" id=4]
+[ext_resource path="res://Code/menu_button.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -74.0
+margin_right = 128.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 256.0
+margin_bottom = 33.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="centerrow" type="HBoxContainer" parent="Menu"]
+margin_top = 37.0
+margin_right = 256.0
+margin_bottom = 117.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="Menu/centerrow"]
+margin_right = 126.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="Start" type="Button" parent="Menu/centerrow/buttons"]
+margin_right = 126.0
+margin_bottom = 20.0
+flat = true
+script = ExtResource( 5 )
+scene_to_load = "res://Levels/Level 0.tscn"
+
+[node name="Label" type="Label" parent="Menu/centerrow/buttons/Start"]
+margin_right = 83.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 2 )
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="Menu/centerrow/buttons"]
+margin_top = 30.0
+margin_right = 126.0
+margin_bottom = 50.0
+flat = true
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Menu/centerrow/buttons/Options"]
+margin_right = 56.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Menu/centerrow/buttons"]
+margin_top = 60.0
+margin_right = 126.0
+margin_bottom = 80.0
+action_mode = 0
+flat = true
+script = ExtResource( 5 )
+scene_to_load = "quit"
+
+[node name="Label" type="Label" parent="Menu/centerrow/buttons/Exit"]
+margin_right = 83.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 2 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/centerrow"]
+margin_left = 130.0
+margin_right = 256.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Version Label" type="Label" parent="Menu"]
+margin_left = 87.0
+margin_top = 121.0
+margin_right = 169.0
+margin_bottom = 154.0
+size_flags_horizontal = 4
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 1 )
+text = "Version 0.01
+Andrew Bubar"
+
+[node name="Fade_in" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade_in"]
+anims/fade_in = SubResource( 2 )
+[connection signal="pressed" from="Menu/centerrow/buttons/Start" to="Menu/centerrow/buttons/Start" method="_on_Start_pressed"]
