@@ -54,6 +54,8 @@ func _ready():
 			death_timer.start(9)
 		"1":
 			death_timer.start(13)
+		"2":
+			death_timer.start(11)
 	
 	print("time till death is: " + str(death_timer.time_left))
 
