@@ -48,5 +48,5 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckBox"]
 shape = SubResource( 2 )
 [connection signal="body_entered" from="KillBox" to="Player" method="_on_KillBox_body_entered"]
-[connection signal="body_entered" from="CheckBox" to="Player" method="_on_CheckBox_body_entered"]
 [connection signal="body_entered" from="CheckBox" to="CheckBox" method="_on_CheckBox_body_entered"]
+[connection signal="body_entered" from="CheckBox" to="Player" method="_on_CheckBox_body_entered"]
