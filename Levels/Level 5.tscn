@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://prefab/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/TileSetForGame.tres" type="TileSet" id=2]
+[ext_resource path="res://prefab/KillBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/CheckBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level 6.tscn" type="PackedScene" id=5]
+
+[node name="5" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -458657, 0, 0, -393124, 0, 0, -393116, 0, 0, -393115, 0, 0, -393114, 0, 0, -393113, 0, 0, -393112, 0, 0, -393111, 0, 0, -393110, 0, 0, -393109, 0, 0, -327609, 0, 0, -327608, 0, 0, -327607, 0, 0, -327606, 0, 0, -327605, 0, 0, -327604, 0, 0, -327603, 0, 0, -327597, 0, 0, -327593, 0, 0, -327592, 0, 0, -327591, 0, 0, -327583, 0, 0, -262101, 0, 0, -262100, 0, 0, -262080, 0, 0, -262064, 0, 0, -196571, 0, 0, -196570, 0, 0, -196569, 0, 0, -196568, 0, 0, -196560, 0, 0, -196558, 0, 0, -196556, 0, 0, -196554, 0, 0, -196552, 0, 0, -196550, 0, 0, -196548, 0, 0, -196546, 0, 0, -196540, 0, 0, -131039, 0, 0, -131038, 0, 0, -131006, 0, 0, -65506, 0, 0, 17, 0, 0, 27, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131091, 0, 0, 131101, 0, 0, 131106, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196617, 0, 0, 196624, 0, 0, 196625, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 262170, 0, 0, 262181, 0, 0, 262182, 0, 0, 262214, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 393245, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -27.3517, -3.56763 )
+
+[node name="KillBox" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1031.42, 220.148 )
+rotation = -0.0033467
+scale = Vector2( 4.15205, 1 )
+
+[node name="CheckBox" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1127.7, 55.7567 )
+next_scene = ExtResource( 5 )
+[connection signal="body_entered" from="KillBox" to="Player" method="_on_KillBox_body_entered"]
+[connection signal="body_entered" from="CheckBox" to="Player" method="_on_CheckBox_body_entered"]

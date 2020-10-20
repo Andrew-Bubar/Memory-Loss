@@ -55,7 +55,17 @@ func _ready():
 		"1":
 			death_timer.start(13)
 		"2":
-			death_timer.start(11)
+			death_timer.start(17)
+		"3":
+			death_timer.start(13)
+		"4":
+			death_timer.start(5)
+		"5":
+			death_timer.start(15)
+		"6":
+			death_timer.start(17)
+		_:
+			print_debug(ERR_FILE_MISSING_DEPENDENCIES)
 	
 	print("time till death is: " + str(death_timer.time_left))
 
@@ -102,7 +112,7 @@ func wall_jump():
 	
 func _get_weight():
 	if is_on_floor():
-		return 0.2
+		return 0.15
 	else:
 		if move_dir == 0:
 			return 0.02
@@ -113,6 +123,11 @@ func _get_weight():
 	
 func _update_input():
 	move_dir = -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
+	
+	#allow player to close to menu
+	if Input.is_action_just_pressed("force_to_menu"):
+		print("Pressed the force to menu key")
+		get_tree().change_scene("res://Levels/TitleScreen.tscn")
 	
 	if death_timer.time_left == 0:
 		kill()
@@ -174,4 +189,4 @@ func _on_KillBox_body_entered(body):
 
 
 func _on_CheckBox_body_entered(body):
-	pass # Replace with function body.
+	pass

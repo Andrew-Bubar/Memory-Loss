@@ -1,6 +1,8 @@
 extends state_machine
 
 func _ready():
+	
+	#handle the players states
 	add_state("idle")
 	add_state("run")
 	add_state("jump")

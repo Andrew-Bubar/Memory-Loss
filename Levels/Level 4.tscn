@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/TileSetForGame.tres" type="TileSet" id=1]
+[ext_resource path="res://prefab/CheckBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefab/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/check_point.png" type="Texture" id=4]
+[ext_resource path="res://prefab/KillBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Level 5.tscn" type="PackedScene" id=6]
+
+[node name="4" type="Node2D"]
+position = Vector2( 80.6102, 24.7487 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 458785, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589867, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655379, 0, 0, 655397, 0, 0, 655398, 0, 0, 655399, 0, 0, 786479, 0, 0, 786480, 0, 0, 786486, 0, 0, 786487, 0, 0, 1245163, 0, 0, 1310693, 0, 0, 1310694, 0, 0, 1310695, 0, 0, 1310702, 0, 0, 1310703, 0, 0, 1310707, 0, 0, 1310708, 0, 0, 1310709, 0, 0, 1310710, 0, 0, 1310711, 0, 0, 1441761, 0, 0, 1441762, 0, 0, 1572836, 0, 0, 2031591, 0, 0, 2031592, 0, 0 )
+
+[node name="check_point" type="Sprite" parent="TileMap"]
+position = Vector2( 873.04, 182.746 )
+texture = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 98.2155, 81.3785 )
+
+[node name="CheckBox" parent="." instance=ExtResource( 2 )]
+position = Vector2( -382.766, 472.025 )
+next_scene = ExtResource( 6 )
+
+[node name="KillBox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 494.03, 246.385 )
+
+[node name="KillBox2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -232.168, 481.145 )
+rotation = -0.588692
+
+[node name="KillBox3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -342.477, 539.128 )
+rotation = -0.00336331
+[connection signal="body_entered" from="CheckBox" to="CheckBox" method="_on_CheckBox_body_entered"]
+[connection signal="body_entered" from="CheckBox" to="Player" method="_on_CheckBox_body_entered"]
+[connection signal="body_entered" from="KillBox" to="Player" method="_on_KillBox_body_entered"]
+[connection signal="body_entered" from="KillBox2" to="Player" method="_on_KillBox_body_entered"]
+[connection signal="body_entered" from="KillBox3" to="Player" method="_on_KillBox_body_entered"]
